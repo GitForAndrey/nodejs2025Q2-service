@@ -11,7 +11,6 @@ export class TracksService {
 
   create(dto: CreateTrackDto): Track {
     
-    console.log(dto);
     const track: TrackEntity = {
       id: randomUUID(),
       name: dto.name,
