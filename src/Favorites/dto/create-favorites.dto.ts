@@ -1,7 +1,5 @@
-import { IsNotEmpty, IsNumber, IsOptional, IsString } from "class-validator";
-
 export class CreateFavoritesDto {
-  artists: string[]; // favorite artists ids
-  albums: string[]; // favorite albums ids
+  artists: string[];
+  albums: string[];
   tracks: string[];
 }

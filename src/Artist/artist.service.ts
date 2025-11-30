@@ -7,26 +7,24 @@ import { UpdateArtistDto } from './dto/update-artist.dto';
 
 @Injectable()
 export class ArtistsService {
-    private artists: ArtistEntity[] = [];
+  private artists: ArtistEntity[] = [];
 
   create(dto: CreateArtistDto): Artist {
-    
     const artist: ArtistEntity = {
       id: randomUUID(),
       name: dto.name,
       grammy: dto.grammy,
-      
     };
     this.artists.push(artist);
     return artist;
   }
 
   findAll(): Artist[] {
-  return this.artists;
-}
-findById(id: string): Artist | undefined {
-  return this.artists.find((a) => a.id === id);
-}
+    return this.artists;
+  }
+  findById(id: string): Artist | undefined {
+    return this.artists.find((a) => a.id === id);
+  }
 
   findOne(id: string): Artist {
     const artist = this.artists.find((u) => u.id === id);
@@ -38,7 +36,6 @@ findById(id: string): Artist | undefined {
   }
 
   update(id: string, dto: UpdateArtistDto): Artist {
-
     const artist = this.artists.find((u) => u.id === id);
     if (!artist) {
       throw new NotFoundException('Artist not found');

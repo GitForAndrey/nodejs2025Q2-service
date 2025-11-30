@@ -7,27 +7,25 @@ import { UpdateAlbumDto } from './dto/update-album.dto';
 
 @Injectable()
 export class AlbumsService {
-    private albums: AlbumEntity[] = [];
+  private albums: AlbumEntity[] = [];
 
   create(dto: CreateAlbumDto): Album {
-    
     const album: AlbumEntity = {
       id: randomUUID(),
       name: dto.name,
       year: dto.year,
       artistId: dto.artistId,
-      
     };
     this.albums.push(album);
     return album;
   }
 
   findAll(): Album[] {
-  return this.albums;
-}
-findById(id: string): Album | undefined {
-  return this.albums.find((a) => a.id === id);
-}
+    return this.albums;
+  }
+  findById(id: string): Album | undefined {
+    return this.albums.find((a) => a.id === id);
+  }
   findOne(id: string): Album {
     const album = this.albums.find((u) => u.id === id);
     if (!album) {
@@ -38,7 +36,6 @@ findById(id: string): Album | undefined {
   }
 
   update(id: string, dto: UpdateAlbumDto): Album {
-
     const album = this.albums.find((u) => u.id === id);
     if (!album) {
       throw new NotFoundException('Album not found');
@@ -54,5 +51,11 @@ findById(id: string): Album | undefined {
     if (this.albums.length === before) {
       throw new NotFoundException('Album not found');
     }
+  }
+
+  nullArtistById(artistId: string): void {
+    this.albums = this.albums.map((album) =>
+      album.artistId === artistId ? { ...album, artistId: null } : album,
+    );
   }
 }

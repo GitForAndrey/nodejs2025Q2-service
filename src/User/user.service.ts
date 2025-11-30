@@ -1,13 +1,17 @@
-import { BadRequestException, ForbiddenException, Injectable, NotFoundException } from '@nestjs/common';
+import {
+  ForbiddenException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { randomUUID } from 'crypto';
 import { UserEntity } from './entities/user.entity';
-import { User, UserResponse } from './interfaces/user.interfase';
+import { UserResponse } from './interfaces/user.interfase';
 
 @Injectable()
 export class UsersService {
-    private users: UserEntity[] = [];
+  private users: UserEntity[] = [];
 
   create(dto: CreateUserDto): UserResponse {
     const now = Date.now();
@@ -22,20 +26,22 @@ export class UsersService {
     };
     this.users.push(user);
 
-    const { password, ...safeUser } = user;
+    const safeUser = { ...user };
+    delete safeUser.password;
     return safeUser;
   }
 
   findAll(): UserResponse[] {
-  return this.users.map(({ password, ...safeUser }) => safeUser);
-}
+    return this.users.map(({ password, ...safeUser }) => safeUser);
+  }
 
   findOne(id: string): UserResponse {
     const user = this.users.find((u) => u.id === id);
     if (!user) {
       throw new NotFoundException('User not found');
     }
-    const { password, ...safeUser } = user;
+    const safeUser = { ...user };
+    delete safeUser.password;
     return safeUser;
   }
 
@@ -47,12 +53,13 @@ export class UsersService {
     if (user.password != dto.oldPassword) {
       throw new ForbiddenException('Old password is wrong');
     }
-  
+
     user.password = dto.newPassword;
     user.version += 1;
     user.updatedAt = Date.now();
 
-    const { password, ...safeUser } = user;
+    const safeUser = { ...user };
+    delete safeUser.password;
     return safeUser;
   }
 

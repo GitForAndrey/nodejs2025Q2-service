@@ -33,7 +33,10 @@ export class TracksController {
   }
 
   @Put(':id')
-  update(@Param('id', new ParseUUIDPipe({ version: '4' })) id: string, @Body() dto: UpdateTrackDto) {
+  update(
+    @Param('id', new ParseUUIDPipe({ version: '4' })) id: string,
+    @Body() dto: UpdateTrackDto,
+  ) {
     return this.tracksService.update(id, dto);
   }
 

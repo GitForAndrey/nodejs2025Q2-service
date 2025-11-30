@@ -20,7 +20,7 @@ export class FavoritesController {
 
   @Post('track/:id')
   createTrack(@Param('id', new ParseUUIDPipe({ version: '4' })) id: string) {
-     this.favoritesService.createTrack(id);
+    this.favoritesService.createTrack(id);
   }
   @Post('album/:id')
   createAlbum(@Param('id', new ParseUUIDPipe({ version: '4' })) id: string) {
