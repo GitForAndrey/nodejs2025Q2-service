@@ -26,7 +26,9 @@ export class TracksService {
   findAll(): Track[] {
   return this.tracks;
 }
-
+findById(id: string): Track | undefined {
+  return this.tracks.find((a) => a.id === id);
+}
   findOne(id: string): Track {
     const track = this.tracks.find((u) => u.id === id);
     if (!track) {

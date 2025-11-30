@@ -25,7 +25,9 @@ export class AlbumsService {
   findAll(): Album[] {
   return this.albums;
 }
-
+findById(id: string): Album | undefined {
+  return this.albums.find((a) => a.id === id);
+}
   findOne(id: string): Album {
     const album = this.albums.find((u) => u.id === id);
     if (!album) {

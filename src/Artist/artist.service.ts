@@ -24,6 +24,9 @@ export class ArtistsService {
   findAll(): Artist[] {
   return this.artists;
 }
+findById(id: string): Artist | undefined {
+  return this.artists.find((a) => a.id === id);
+}
 
   findOne(id: string): Artist {
     const artist = this.artists.find((u) => u.id === id);
