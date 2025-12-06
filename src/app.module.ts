@@ -4,9 +4,11 @@ import { TracksModule } from './Track/track.module';
 import { ArtistsModule } from './Artist/artist.module';
 import { AlbumsModule } from './Album/album.module';
 import { FavoritesModule } from './Favorites/favorites.module';
+import { PrismaModule } from 'prisma/prisma.module';
 
 @Module({
   imports: [
+    PrismaModule,
     UsersModule,
     TracksModule,
     ArtistsModule,
