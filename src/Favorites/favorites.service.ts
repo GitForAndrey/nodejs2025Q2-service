@@ -33,14 +33,6 @@ export class FavoritesService {
         HttpStatus.UNPROCESSABLE_ENTITY,
       );
     }
-
-    const exists = await this.prisma.favoriteTrack.findUnique({
-      where: { trackId: id },
-    });
-    if (exists) {
-      throw new ConflictException('Track already in favorites');
-    }
-
     await this.prisma.favoriteTrack.create({
       data: { trackId: id },
     });
@@ -54,14 +46,6 @@ export class FavoritesService {
         HttpStatus.UNPROCESSABLE_ENTITY,
       );
     }
-
-    const exists = await this.prisma.favoriteAlbum.findUnique({
-      where: { albumId: id },
-    });
-    if (exists) {
-      throw new ConflictException('Album already in favorites');
-    }
-
     await this.prisma.favoriteAlbum.create({
       data: { albumId: id },
     });
@@ -75,14 +59,6 @@ export class FavoritesService {
         HttpStatus.UNPROCESSABLE_ENTITY,
       );
     }
-
-    const exists = await this.prisma.favoriteArtist.findUnique({
-      where: { artistId: id },
-    });
-    if (exists) {
-      throw new ConflictException('Artist already in favorites');
-    }
-
     await this.prisma.favoriteArtist.create({
       data: { artistId: id },
     });

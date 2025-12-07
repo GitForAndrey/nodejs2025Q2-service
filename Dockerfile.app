@@ -1,18 +1,23 @@
-FROM node:24-alpine AS builder
+
+# Use Node.js 20.11.1 base image
+FROM node:24-alpine
 
 WORKDIR /app
+
+# Copy package files
 COPY package*.json ./
-RUN npm ci --only=production
 
+# Copy prisma
+COPY prisma ./prisma/
+
+# Install dependencies
+RUN npm install && npm cache clean --force
+
+# Copy all source code
 COPY . .
-RUN npm run build
 
-FROM node:24-alpine AS runner
-WORKDIR /app
+# Expose port
+EXPOSE 4000
 
-COPY --from=builder /app/dist ./dist
-COPY --from=builder /app/node_modules ./node_modules
-COPY --from=builder /app/package*.json ./
-
-EXPOSE 3000
-CMD ["npm", "run", "start:prod"]
+# Use the start:dev:docker script
+CMD ["npm", "run", "start:dev:docker"]
