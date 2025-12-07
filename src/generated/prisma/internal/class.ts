@@ -20,7 +20,7 @@ const config: runtime.GetPrismaClientConfig = {
   "clientVersion": "7.1.0",
   "engineVersion": "ab635e6b9d606fa5c8fb8b1a7f909c3c3c1c98ba",
   "activeProvider": "postgresql",
-  "inlineSchema": "generator client {\n  provider     = \"prisma-client\"\n  output       = \"../src/generated/prisma\"\n  moduleFormat = \"cjs\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n}\n\nmodel User {\n  id        String   @id @default(uuid())\n  login     String   @unique\n  password  String\n  version   Int      @default(1)\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n}\n\nmodel Artist {\n  id             String          @id @default(uuid())\n  name           String\n  grammy         Boolean         @default(false)\n  albums         Album[]\n  tracks         Track[]\n  favoriteArtist FavoriteArtist?\n}\n\nmodel Album {\n  id            String         @id @default(uuid())\n  name          String\n  year          Int\n  artistId      String?\n  artist        Artist?        @relation(fields: [artistId], references: [id], onDelete: SetNull)\n  tracks        Track[]\n  favoriteAlbum FavoriteAlbum?\n}\n\nmodel Track {\n  id            String         @id @default(uuid())\n  name          String\n  duration      Int\n  artistId      String?\n  artist        Artist?        @relation(fields: [artistId], references: [id], onDelete: SetNull)\n  albumId       String?\n  album         Album?         @relation(fields: [albumId], references: [id], onDelete: SetNull)\n  favoriteTrack FavoriteTrack?\n}\n\nmodel FavoriteArtist {\n  id       String @id @default(uuid())\n  artistId String @unique\n  artist   Artist @relation(fields: [artistId], references: [id], onDelete: Cascade)\n}\n\nmodel FavoriteAlbum {\n  id      String @id @default(uuid())\n  albumId String @unique\n  album   Album  @relation(fields: [albumId], references: [id], onDelete: Cascade)\n}\n\nmodel FavoriteTrack {\n  id      String @id @default(uuid())\n  trackId String @unique\n  track   Track  @relation(fields: [trackId], references: [id], onDelete: Cascade)\n}\n",
+  "inlineSchema": "generator client {\n  provider     = \"prisma-client\"\n  output       = \"../src/generated/client\"\n  moduleFormat = \"cjs\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n}\n\nmodel Artist {\n  id       String          @id @default(uuid())\n  name     String\n  grammy   Boolean         @default(false)\n  albums   Album[]\n  tracks   Track[]\n  favorite FavoriteArtist?\n}\n\nmodel Album {\n  id       String         @id @default(uuid())\n  name     String\n  year     Int\n  artistId String?\n  artist   Artist?        @relation(fields: [artistId], references: [id], onDelete: SetNull)\n  tracks   Track[]\n  favorite FavoriteAlbum?\n}\n\nmodel Track {\n  id       String         @id @default(uuid())\n  name     String\n  duration Int\n  artistId String?\n  artist   Artist?        @relation(fields: [artistId], references: [id], onDelete: SetNull)\n  albumId  String?\n  album    Album?         @relation(fields: [albumId], references: [id], onDelete: SetNull)\n  favorite FavoriteTrack?\n}\n\nmodel FavoriteArtist {\n  id       String @id @default(uuid())\n  artistId String @unique\n  artist   Artist @relation(fields: [artistId], references: [id], onDelete: Cascade)\n}\n\nmodel FavoriteAlbum {\n  id      String @id @default(uuid())\n  albumId String @unique\n  album   Album  @relation(fields: [albumId], references: [id], onDelete: Cascade)\n}\n\nmodel FavoriteTrack {\n  id      String @id @default(uuid())\n  trackId String @unique\n  track   Track  @relation(fields: [trackId], references: [id], onDelete: Cascade)\n}\n\nmodel User {\n  id        String @id @default(uuid())\n  login     String @unique\n  password  String\n  version   Int    @default(1)\n  createdAt BigInt\n  updatedAt BigInt\n}\n",
   "runtimeDataModel": {
     "models": {},
     "enums": {},
@@ -28,7 +28,7 @@ const config: runtime.GetPrismaClientConfig = {
   }
 }
 
-config.runtimeDataModel = JSON.parse("{\"models\":{\"User\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"login\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"password\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"version\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":null},\"Artist\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"grammy\",\"kind\":\"scalar\",\"type\":\"Boolean\"},{\"name\":\"albums\",\"kind\":\"object\",\"type\":\"Album\",\"relationName\":\"AlbumToArtist\"},{\"name\":\"tracks\",\"kind\":\"object\",\"type\":\"Track\",\"relationName\":\"ArtistToTrack\"},{\"name\":\"favoriteArtist\",\"kind\":\"object\",\"type\":\"FavoriteArtist\",\"relationName\":\"ArtistToFavoriteArtist\"}],\"dbName\":null},\"Album\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"year\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"artistId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"artist\",\"kind\":\"object\",\"type\":\"Artist\",\"relationName\":\"AlbumToArtist\"},{\"name\":\"tracks\",\"kind\":\"object\",\"type\":\"Track\",\"relationName\":\"AlbumToTrack\"},{\"name\":\"favoriteAlbum\",\"kind\":\"object\",\"type\":\"FavoriteAlbum\",\"relationName\":\"AlbumToFavoriteAlbum\"}],\"dbName\":null},\"Track\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"duration\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"artistId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"artist\",\"kind\":\"object\",\"type\":\"Artist\",\"relationName\":\"ArtistToTrack\"},{\"name\":\"albumId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"album\",\"kind\":\"object\",\"type\":\"Album\",\"relationName\":\"AlbumToTrack\"},{\"name\":\"favoriteTrack\",\"kind\":\"object\",\"type\":\"FavoriteTrack\",\"relationName\":\"FavoriteTrackToTrack\"}],\"dbName\":null},\"FavoriteArtist\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"artistId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"artist\",\"kind\":\"object\",\"type\":\"Artist\",\"relationName\":\"ArtistToFavoriteArtist\"}],\"dbName\":null},\"FavoriteAlbum\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"albumId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"album\",\"kind\":\"object\",\"type\":\"Album\",\"relationName\":\"AlbumToFavoriteAlbum\"}],\"dbName\":null},\"FavoriteTrack\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"trackId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"track\",\"kind\":\"object\",\"type\":\"Track\",\"relationName\":\"FavoriteTrackToTrack\"}],\"dbName\":null}},\"enums\":{},\"types\":{}}")
+config.runtimeDataModel = JSON.parse("{\"models\":{\"Artist\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"grammy\",\"kind\":\"scalar\",\"type\":\"Boolean\"},{\"name\":\"albums\",\"kind\":\"object\",\"type\":\"Album\",\"relationName\":\"AlbumToArtist\"},{\"name\":\"tracks\",\"kind\":\"object\",\"type\":\"Track\",\"relationName\":\"ArtistToTrack\"},{\"name\":\"favorite\",\"kind\":\"object\",\"type\":\"FavoriteArtist\",\"relationName\":\"ArtistToFavoriteArtist\"}],\"dbName\":null},\"Album\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"year\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"artistId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"artist\",\"kind\":\"object\",\"type\":\"Artist\",\"relationName\":\"AlbumToArtist\"},{\"name\":\"tracks\",\"kind\":\"object\",\"type\":\"Track\",\"relationName\":\"AlbumToTrack\"},{\"name\":\"favorite\",\"kind\":\"object\",\"type\":\"FavoriteAlbum\",\"relationName\":\"AlbumToFavoriteAlbum\"}],\"dbName\":null},\"Track\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"duration\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"artistId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"artist\",\"kind\":\"object\",\"type\":\"Artist\",\"relationName\":\"ArtistToTrack\"},{\"name\":\"albumId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"album\",\"kind\":\"object\",\"type\":\"Album\",\"relationName\":\"AlbumToTrack\"},{\"name\":\"favorite\",\"kind\":\"object\",\"type\":\"FavoriteTrack\",\"relationName\":\"FavoriteTrackToTrack\"}],\"dbName\":null},\"FavoriteArtist\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"artistId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"artist\",\"kind\":\"object\",\"type\":\"Artist\",\"relationName\":\"ArtistToFavoriteArtist\"}],\"dbName\":null},\"FavoriteAlbum\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"albumId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"album\",\"kind\":\"object\",\"type\":\"Album\",\"relationName\":\"AlbumToFavoriteAlbum\"}],\"dbName\":null},\"FavoriteTrack\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"trackId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"track\",\"kind\":\"object\",\"type\":\"Track\",\"relationName\":\"FavoriteTrackToTrack\"}],\"dbName\":null},\"User\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"login\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"password\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"version\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"BigInt\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"BigInt\"}],\"dbName\":null}},\"enums\":{},\"types\":{}}")
 
 async function decodeBase64AsWasm(wasmBase64: string): Promise<WebAssembly.Module> {
   const { Buffer } = await import('node:buffer')
@@ -58,8 +58,8 @@ export interface PrismaClientConstructor {
    * @example
    * ```
    * const prisma = new PrismaClient()
-   * // Fetch zero or more Users
-   * const users = await prisma.user.findMany()
+   * // Fetch zero or more Artists
+   * const artists = await prisma.artist.findMany()
    * ```
    * 
    * Read more in our [docs](https://pris.ly/d/client).
@@ -80,8 +80,8 @@ export interface PrismaClientConstructor {
  * @example
  * ```
  * const prisma = new PrismaClient()
- * // Fetch zero or more Users
- * const users = await prisma.user.findMany()
+ * // Fetch zero or more Artists
+ * const artists = await prisma.artist.findMany()
  * ```
  * 
  * Read more in our [docs](https://pris.ly/d/client).
@@ -175,16 +175,6 @@ export interface PrismaClient<
   }>>
 
       /**
-   * `prisma.user`: Exposes CRUD operations for the **User** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more Users
-    * const users = await prisma.user.findMany()
-    * ```
-    */
-  get user(): Prisma.UserDelegate<ExtArgs, { omit: OmitOpts }>;
-
-  /**
    * `prisma.artist`: Exposes CRUD operations for the **Artist** model.
     * Example usage:
     * ```ts
@@ -243,6 +233,16 @@ export interface PrismaClient<
     * ```
     */
   get favoriteTrack(): Prisma.FavoriteTrackDelegate<ExtArgs, { omit: OmitOpts }>;
+
+  /**
+   * `prisma.user`: Exposes CRUD operations for the **User** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Users
+    * const users = await prisma.user.findMany()
+    * ```
+    */
+  get user(): Prisma.UserDelegate<ExtArgs, { omit: OmitOpts }>;
 }
 
 export function getPrismaClientClass(): PrismaClientConstructor {

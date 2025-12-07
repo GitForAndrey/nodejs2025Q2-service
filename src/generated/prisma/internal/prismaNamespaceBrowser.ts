@@ -51,13 +51,13 @@ export const AnyNull = runtime.AnyNull
 
 
 export const ModelName = {
-  User: 'User',
   Artist: 'Artist',
   Album: 'Album',
   Track: 'Track',
   FavoriteArtist: 'FavoriteArtist',
   FavoriteAlbum: 'FavoriteAlbum',
-  FavoriteTrack: 'FavoriteTrack'
+  FavoriteTrack: 'FavoriteTrack',
+  User: 'User'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -74,18 +74,6 @@ export const TransactionIsolationLevel = {
 } as const
 
 export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
-
-
-export const UserScalarFieldEnum = {
-  id: 'id',
-  login: 'login',
-  password: 'password',
-  version: 'version',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-} as const
-
-export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
 
 
 export const ArtistScalarFieldEnum = {
@@ -140,6 +128,18 @@ export const FavoriteTrackScalarFieldEnum = {
 } as const
 
 export type FavoriteTrackScalarFieldEnum = (typeof FavoriteTrackScalarFieldEnum)[keyof typeof FavoriteTrackScalarFieldEnum]
+
+
+export const UserScalarFieldEnum = {
+  id: 'id',
+  login: 'login',
+  password: 'password',
+  version: 'version',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
 
 
 export const SortOrder = {

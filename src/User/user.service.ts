@@ -16,11 +16,14 @@ export class UsersService {
     if (existingUser) {
       throw new ConflictException('User with this login already exists');
     }
+    const now = Date.now();
     const user = await this.prisma.user.create({
       data: {
         login: dto.login,
         password: dto.password,
         version: 1,
+        createdAt: now,
+        updatedAt: now,
       },
     });
 
@@ -61,13 +64,13 @@ export class UsersService {
   if (user.password != dto.oldPassword) {
       throw new ForbiddenException('Old password is wrong');
     }
-
+    const now = Date.now();
   const updatedUser = await this.prisma.user.update({
     where: { id },
     data: {
       password: dto.newPassword,
       version: user.version + 1,
-      updatedAt: new Date(),
+      updatedAt: now,
     },
   });
 

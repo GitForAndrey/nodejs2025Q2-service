@@ -194,7 +194,7 @@ export type FavoriteAlbumScalarWhereWithAggregatesInput = {
 
 export type FavoriteAlbumCreateInput = {
   id?: string
-  album: Prisma.AlbumCreateNestedOneWithoutFavoriteAlbumInput
+  album: Prisma.AlbumCreateNestedOneWithoutFavoriteInput
 }
 
 export type FavoriteAlbumUncheckedCreateInput = {
@@ -204,7 +204,7 @@ export type FavoriteAlbumUncheckedCreateInput = {
 
 export type FavoriteAlbumUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  album?: Prisma.AlbumUpdateOneRequiredWithoutFavoriteAlbumNestedInput
+  album?: Prisma.AlbumUpdateOneRequiredWithoutFavoriteNestedInput
 }
 
 export type FavoriteAlbumUncheckedUpdateInput = {

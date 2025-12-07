@@ -194,7 +194,7 @@ export type FavoriteTrackScalarWhereWithAggregatesInput = {
 
 export type FavoriteTrackCreateInput = {
   id?: string
-  track: Prisma.TrackCreateNestedOneWithoutFavoriteTrackInput
+  track: Prisma.TrackCreateNestedOneWithoutFavoriteInput
 }
 
 export type FavoriteTrackUncheckedCreateInput = {
@@ -204,7 +204,7 @@ export type FavoriteTrackUncheckedCreateInput = {
 
 export type FavoriteTrackUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  track?: Prisma.TrackUpdateOneRequiredWithoutFavoriteTrackNestedInput
+  track?: Prisma.TrackUpdateOneRequiredWithoutFavoriteNestedInput
 }
 
 export type FavoriteTrackUncheckedUpdateInput = {

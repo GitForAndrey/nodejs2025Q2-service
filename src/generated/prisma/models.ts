@@ -8,11 +8,11 @@
  *
  * 🟢 You can import this file directly.
  */
-export type * from './models/User'
 export type * from './models/Artist'
 export type * from './models/Album'
 export type * from './models/Track'
 export type * from './models/FavoriteArtist'
 export type * from './models/FavoriteAlbum'
 export type * from './models/FavoriteTrack'
+export type * from './models/User'
 export type * from './commonInputTypes'

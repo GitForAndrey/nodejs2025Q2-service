@@ -6,9 +6,9 @@ services:
     ports:
       - "5432:5432"
     environment:
-      POSTGRES_DB: musicdb        # Назва БД
-      POSTGRES_USER: musicuser    # Користувач
-      POSTGRES_PASSWORD: password123
+      POSTGRES_DB: env.POSTGRES_DB       
+      POSTGRES_USER: env.POSTGRES_USER    
+      POSTGRES_PASSWORD: env.POSTGRES_PASSWORD
     volumes:
       - postgres_data:/var/lib/postgresql
     healthcheck:

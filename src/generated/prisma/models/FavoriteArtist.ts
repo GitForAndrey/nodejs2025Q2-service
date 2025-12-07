@@ -194,7 +194,7 @@ export type FavoriteArtistScalarWhereWithAggregatesInput = {
 
 export type FavoriteArtistCreateInput = {
   id?: string
-  artist: Prisma.ArtistCreateNestedOneWithoutFavoriteArtistInput
+  artist: Prisma.ArtistCreateNestedOneWithoutFavoriteInput
 }
 
 export type FavoriteArtistUncheckedCreateInput = {
@@ -204,7 +204,7 @@ export type FavoriteArtistUncheckedCreateInput = {
 
 export type FavoriteArtistUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  artist?: Prisma.ArtistUpdateOneRequiredWithoutFavoriteArtistNestedInput
+  artist?: Prisma.ArtistUpdateOneRequiredWithoutFavoriteNestedInput
 }
 
 export type FavoriteArtistUncheckedUpdateInput = {

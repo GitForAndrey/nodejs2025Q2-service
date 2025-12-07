@@ -218,7 +218,7 @@ export type TrackWhereInput = {
   albumId?: Prisma.StringNullableFilter<"Track"> | string | null
   artist?: Prisma.XOR<Prisma.ArtistNullableScalarRelationFilter, Prisma.ArtistWhereInput> | null
   album?: Prisma.XOR<Prisma.AlbumNullableScalarRelationFilter, Prisma.AlbumWhereInput> | null
-  favoriteTrack?: Prisma.XOR<Prisma.FavoriteTrackNullableScalarRelationFilter, Prisma.FavoriteTrackWhereInput> | null
+  favorite?: Prisma.XOR<Prisma.FavoriteTrackNullableScalarRelationFilter, Prisma.FavoriteTrackWhereInput> | null
 }
 
 export type TrackOrderByWithRelationInput = {
@@ -229,7 +229,7 @@ export type TrackOrderByWithRelationInput = {
   albumId?: Prisma.SortOrderInput | Prisma.SortOrder
   artist?: Prisma.ArtistOrderByWithRelationInput
   album?: Prisma.AlbumOrderByWithRelationInput
-  favoriteTrack?: Prisma.FavoriteTrackOrderByWithRelationInput
+  favorite?: Prisma.FavoriteTrackOrderByWithRelationInput
 }
 
 export type TrackWhereUniqueInput = Prisma.AtLeast<{
@@ -243,7 +243,7 @@ export type TrackWhereUniqueInput = Prisma.AtLeast<{
   albumId?: Prisma.StringNullableFilter<"Track"> | string | null
   artist?: Prisma.XOR<Prisma.ArtistNullableScalarRelationFilter, Prisma.ArtistWhereInput> | null
   album?: Prisma.XOR<Prisma.AlbumNullableScalarRelationFilter, Prisma.AlbumWhereInput> | null
-  favoriteTrack?: Prisma.XOR<Prisma.FavoriteTrackNullableScalarRelationFilter, Prisma.FavoriteTrackWhereInput> | null
+  favorite?: Prisma.XOR<Prisma.FavoriteTrackNullableScalarRelationFilter, Prisma.FavoriteTrackWhereInput> | null
 }, "id">
 
 export type TrackOrderByWithAggregationInput = {
@@ -276,7 +276,7 @@ export type TrackCreateInput = {
   duration: number
   artist?: Prisma.ArtistCreateNestedOneWithoutTracksInput
   album?: Prisma.AlbumCreateNestedOneWithoutTracksInput
-  favoriteTrack?: Prisma.FavoriteTrackCreateNestedOneWithoutTrackInput
+  favorite?: Prisma.FavoriteTrackCreateNestedOneWithoutTrackInput
 }
 
 export type TrackUncheckedCreateInput = {
@@ -285,7 +285,7 @@ export type TrackUncheckedCreateInput = {
   duration: number
   artistId?: string | null
   albumId?: string | null
-  favoriteTrack?: Prisma.FavoriteTrackUncheckedCreateNestedOneWithoutTrackInput
+  favorite?: Prisma.FavoriteTrackUncheckedCreateNestedOneWithoutTrackInput
 }
 
 export type TrackUpdateInput = {
@@ -294,7 +294,7 @@ export type TrackUpdateInput = {
   duration?: Prisma.IntFieldUpdateOperationsInput | number
   artist?: Prisma.ArtistUpdateOneWithoutTracksNestedInput
   album?: Prisma.AlbumUpdateOneWithoutTracksNestedInput
-  favoriteTrack?: Prisma.FavoriteTrackUpdateOneWithoutTrackNestedInput
+  favorite?: Prisma.FavoriteTrackUpdateOneWithoutTrackNestedInput
 }
 
 export type TrackUncheckedUpdateInput = {
@@ -303,7 +303,7 @@ export type TrackUncheckedUpdateInput = {
   duration?: Prisma.IntFieldUpdateOperationsInput | number
   artistId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   albumId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  favoriteTrack?: Prisma.FavoriteTrackUncheckedUpdateOneWithoutTrackNestedInput
+  favorite?: Prisma.FavoriteTrackUncheckedUpdateOneWithoutTrackNestedInput
 }
 
 export type TrackCreateManyInput = {
@@ -459,18 +459,18 @@ export type TrackUncheckedUpdateManyWithoutAlbumNestedInput = {
   deleteMany?: Prisma.TrackScalarWhereInput | Prisma.TrackScalarWhereInput[]
 }
 
-export type TrackCreateNestedOneWithoutFavoriteTrackInput = {
-  create?: Prisma.XOR<Prisma.TrackCreateWithoutFavoriteTrackInput, Prisma.TrackUncheckedCreateWithoutFavoriteTrackInput>
-  connectOrCreate?: Prisma.TrackCreateOrConnectWithoutFavoriteTrackInput
+export type TrackCreateNestedOneWithoutFavoriteInput = {
+  create?: Prisma.XOR<Prisma.TrackCreateWithoutFavoriteInput, Prisma.TrackUncheckedCreateWithoutFavoriteInput>
+  connectOrCreate?: Prisma.TrackCreateOrConnectWithoutFavoriteInput
   connect?: Prisma.TrackWhereUniqueInput
 }
 
-export type TrackUpdateOneRequiredWithoutFavoriteTrackNestedInput = {
-  create?: Prisma.XOR<Prisma.TrackCreateWithoutFavoriteTrackInput, Prisma.TrackUncheckedCreateWithoutFavoriteTrackInput>
-  connectOrCreate?: Prisma.TrackCreateOrConnectWithoutFavoriteTrackInput
-  upsert?: Prisma.TrackUpsertWithoutFavoriteTrackInput
+export type TrackUpdateOneRequiredWithoutFavoriteNestedInput = {
+  create?: Prisma.XOR<Prisma.TrackCreateWithoutFavoriteInput, Prisma.TrackUncheckedCreateWithoutFavoriteInput>
+  connectOrCreate?: Prisma.TrackCreateOrConnectWithoutFavoriteInput
+  upsert?: Prisma.TrackUpsertWithoutFavoriteInput
   connect?: Prisma.TrackWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.TrackUpdateToOneWithWhereWithoutFavoriteTrackInput, Prisma.TrackUpdateWithoutFavoriteTrackInput>, Prisma.TrackUncheckedUpdateWithoutFavoriteTrackInput>
+  update?: Prisma.XOR<Prisma.XOR<Prisma.TrackUpdateToOneWithWhereWithoutFavoriteInput, Prisma.TrackUpdateWithoutFavoriteInput>, Prisma.TrackUncheckedUpdateWithoutFavoriteInput>
 }
 
 export type TrackCreateWithoutArtistInput = {
@@ -478,7 +478,7 @@ export type TrackCreateWithoutArtistInput = {
   name: string
   duration: number
   album?: Prisma.AlbumCreateNestedOneWithoutTracksInput
-  favoriteTrack?: Prisma.FavoriteTrackCreateNestedOneWithoutTrackInput
+  favorite?: Prisma.FavoriteTrackCreateNestedOneWithoutTrackInput
 }
 
 export type TrackUncheckedCreateWithoutArtistInput = {
@@ -486,7 +486,7 @@ export type TrackUncheckedCreateWithoutArtistInput = {
   name: string
   duration: number
   albumId?: string | null
-  favoriteTrack?: Prisma.FavoriteTrackUncheckedCreateNestedOneWithoutTrackInput
+  favorite?: Prisma.FavoriteTrackUncheckedCreateNestedOneWithoutTrackInput
 }
 
 export type TrackCreateOrConnectWithoutArtistInput = {
@@ -531,7 +531,7 @@ export type TrackCreateWithoutAlbumInput = {
   name: string
   duration: number
   artist?: Prisma.ArtistCreateNestedOneWithoutTracksInput
-  favoriteTrack?: Prisma.FavoriteTrackCreateNestedOneWithoutTrackInput
+  favorite?: Prisma.FavoriteTrackCreateNestedOneWithoutTrackInput
 }
 
 export type TrackUncheckedCreateWithoutAlbumInput = {
@@ -539,7 +539,7 @@ export type TrackUncheckedCreateWithoutAlbumInput = {
   name: string
   duration: number
   artistId?: string | null
-  favoriteTrack?: Prisma.FavoriteTrackUncheckedCreateNestedOneWithoutTrackInput
+  favorite?: Prisma.FavoriteTrackUncheckedCreateNestedOneWithoutTrackInput
 }
 
 export type TrackCreateOrConnectWithoutAlbumInput = {
@@ -568,7 +568,7 @@ export type TrackUpdateManyWithWhereWithoutAlbumInput = {
   data: Prisma.XOR<Prisma.TrackUpdateManyMutationInput, Prisma.TrackUncheckedUpdateManyWithoutAlbumInput>
 }
 
-export type TrackCreateWithoutFavoriteTrackInput = {
+export type TrackCreateWithoutFavoriteInput = {
   id?: string
   name: string
   duration: number
@@ -576,7 +576,7 @@ export type TrackCreateWithoutFavoriteTrackInput = {
   album?: Prisma.AlbumCreateNestedOneWithoutTracksInput
 }
 
-export type TrackUncheckedCreateWithoutFavoriteTrackInput = {
+export type TrackUncheckedCreateWithoutFavoriteInput = {
   id?: string
   name: string
   duration: number
@@ -584,23 +584,23 @@ export type TrackUncheckedCreateWithoutFavoriteTrackInput = {
   albumId?: string | null
 }
 
-export type TrackCreateOrConnectWithoutFavoriteTrackInput = {
+export type TrackCreateOrConnectWithoutFavoriteInput = {
   where: Prisma.TrackWhereUniqueInput
-  create: Prisma.XOR<Prisma.TrackCreateWithoutFavoriteTrackInput, Prisma.TrackUncheckedCreateWithoutFavoriteTrackInput>
+  create: Prisma.XOR<Prisma.TrackCreateWithoutFavoriteInput, Prisma.TrackUncheckedCreateWithoutFavoriteInput>
 }
 
-export type TrackUpsertWithoutFavoriteTrackInput = {
-  update: Prisma.XOR<Prisma.TrackUpdateWithoutFavoriteTrackInput, Prisma.TrackUncheckedUpdateWithoutFavoriteTrackInput>
-  create: Prisma.XOR<Prisma.TrackCreateWithoutFavoriteTrackInput, Prisma.TrackUncheckedCreateWithoutFavoriteTrackInput>
+export type TrackUpsertWithoutFavoriteInput = {
+  update: Prisma.XOR<Prisma.TrackUpdateWithoutFavoriteInput, Prisma.TrackUncheckedUpdateWithoutFavoriteInput>
+  create: Prisma.XOR<Prisma.TrackCreateWithoutFavoriteInput, Prisma.TrackUncheckedCreateWithoutFavoriteInput>
   where?: Prisma.TrackWhereInput
 }
 
-export type TrackUpdateToOneWithWhereWithoutFavoriteTrackInput = {
+export type TrackUpdateToOneWithWhereWithoutFavoriteInput = {
   where?: Prisma.TrackWhereInput
-  data: Prisma.XOR<Prisma.TrackUpdateWithoutFavoriteTrackInput, Prisma.TrackUncheckedUpdateWithoutFavoriteTrackInput>
+  data: Prisma.XOR<Prisma.TrackUpdateWithoutFavoriteInput, Prisma.TrackUncheckedUpdateWithoutFavoriteInput>
 }
 
-export type TrackUpdateWithoutFavoriteTrackInput = {
+export type TrackUpdateWithoutFavoriteInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   duration?: Prisma.IntFieldUpdateOperationsInput | number
@@ -608,7 +608,7 @@ export type TrackUpdateWithoutFavoriteTrackInput = {
   album?: Prisma.AlbumUpdateOneWithoutTracksNestedInput
 }
 
-export type TrackUncheckedUpdateWithoutFavoriteTrackInput = {
+export type TrackUncheckedUpdateWithoutFavoriteInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   duration?: Prisma.IntFieldUpdateOperationsInput | number
@@ -628,7 +628,7 @@ export type TrackUpdateWithoutArtistInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   duration?: Prisma.IntFieldUpdateOperationsInput | number
   album?: Prisma.AlbumUpdateOneWithoutTracksNestedInput
-  favoriteTrack?: Prisma.FavoriteTrackUpdateOneWithoutTrackNestedInput
+  favorite?: Prisma.FavoriteTrackUpdateOneWithoutTrackNestedInput
 }
 
 export type TrackUncheckedUpdateWithoutArtistInput = {
@@ -636,7 +636,7 @@ export type TrackUncheckedUpdateWithoutArtistInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   duration?: Prisma.IntFieldUpdateOperationsInput | number
   albumId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  favoriteTrack?: Prisma.FavoriteTrackUncheckedUpdateOneWithoutTrackNestedInput
+  favorite?: Prisma.FavoriteTrackUncheckedUpdateOneWithoutTrackNestedInput
 }
 
 export type TrackUncheckedUpdateManyWithoutArtistInput = {
@@ -658,7 +658,7 @@ export type TrackUpdateWithoutAlbumInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   duration?: Prisma.IntFieldUpdateOperationsInput | number
   artist?: Prisma.ArtistUpdateOneWithoutTracksNestedInput
-  favoriteTrack?: Prisma.FavoriteTrackUpdateOneWithoutTrackNestedInput
+  favorite?: Prisma.FavoriteTrackUpdateOneWithoutTrackNestedInput
 }
 
 export type TrackUncheckedUpdateWithoutAlbumInput = {
@@ -666,7 +666,7 @@ export type TrackUncheckedUpdateWithoutAlbumInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   duration?: Prisma.IntFieldUpdateOperationsInput | number
   artistId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  favoriteTrack?: Prisma.FavoriteTrackUncheckedUpdateOneWithoutTrackNestedInput
+  favorite?: Prisma.FavoriteTrackUncheckedUpdateOneWithoutTrackNestedInput
 }
 
 export type TrackUncheckedUpdateManyWithoutAlbumInput = {
@@ -686,7 +686,7 @@ export type TrackSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   albumId?: boolean
   artist?: boolean | Prisma.Track$artistArgs<ExtArgs>
   album?: boolean | Prisma.Track$albumArgs<ExtArgs>
-  favoriteTrack?: boolean | Prisma.Track$favoriteTrackArgs<ExtArgs>
+  favorite?: boolean | Prisma.Track$favoriteArgs<ExtArgs>
 }, ExtArgs["result"]["track"]>
 
 export type TrackSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -721,7 +721,7 @@ export type TrackOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = ru
 export type TrackInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   artist?: boolean | Prisma.Track$artistArgs<ExtArgs>
   album?: boolean | Prisma.Track$albumArgs<ExtArgs>
-  favoriteTrack?: boolean | Prisma.Track$favoriteTrackArgs<ExtArgs>
+  favorite?: boolean | Prisma.Track$favoriteArgs<ExtArgs>
 }
 export type TrackIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   artist?: boolean | Prisma.Track$artistArgs<ExtArgs>
@@ -737,7 +737,7 @@ export type $TrackPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   objects: {
     artist: Prisma.$ArtistPayload<ExtArgs> | null
     album: Prisma.$AlbumPayload<ExtArgs> | null
-    favoriteTrack: Prisma.$FavoriteTrackPayload<ExtArgs> | null
+    favorite: Prisma.$FavoriteTrackPayload<ExtArgs> | null
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1141,7 +1141,7 @@ export interface Prisma__TrackClient<T, Null = never, ExtArgs extends runtime.Ty
   readonly [Symbol.toStringTag]: "PrismaPromise"
   artist<T extends Prisma.Track$artistArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Track$artistArgs<ExtArgs>>): Prisma.Prisma__ArtistClient<runtime.Types.Result.GetResult<Prisma.$ArtistPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   album<T extends Prisma.Track$albumArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Track$albumArgs<ExtArgs>>): Prisma.Prisma__AlbumClient<runtime.Types.Result.GetResult<Prisma.$AlbumPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-  favoriteTrack<T extends Prisma.Track$favoriteTrackArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Track$favoriteTrackArgs<ExtArgs>>): Prisma.Prisma__FavoriteTrackClient<runtime.Types.Result.GetResult<Prisma.$FavoriteTrackPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  favorite<T extends Prisma.Track$favoriteArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Track$favoriteArgs<ExtArgs>>): Prisma.Prisma__FavoriteTrackClient<runtime.Types.Result.GetResult<Prisma.$FavoriteTrackPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1610,9 +1610,9 @@ export type Track$albumArgs<ExtArgs extends runtime.Types.Extensions.InternalArg
 }
 
 /**
- * Track.favoriteTrack
+ * Track.favorite
  */
-export type Track$favoriteTrackArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type Track$favoriteArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
    * Select specific fields to fetch from the FavoriteTrack
    */

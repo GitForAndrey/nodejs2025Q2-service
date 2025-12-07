@@ -210,7 +210,7 @@ export type AlbumWhereInput = {
   artistId?: Prisma.StringNullableFilter<"Album"> | string | null
   artist?: Prisma.XOR<Prisma.ArtistNullableScalarRelationFilter, Prisma.ArtistWhereInput> | null
   tracks?: Prisma.TrackListRelationFilter
-  favoriteAlbum?: Prisma.XOR<Prisma.FavoriteAlbumNullableScalarRelationFilter, Prisma.FavoriteAlbumWhereInput> | null
+  favorite?: Prisma.XOR<Prisma.FavoriteAlbumNullableScalarRelationFilter, Prisma.FavoriteAlbumWhereInput> | null
 }
 
 export type AlbumOrderByWithRelationInput = {
@@ -220,7 +220,7 @@ export type AlbumOrderByWithRelationInput = {
   artistId?: Prisma.SortOrderInput | Prisma.SortOrder
   artist?: Prisma.ArtistOrderByWithRelationInput
   tracks?: Prisma.TrackOrderByRelationAggregateInput
-  favoriteAlbum?: Prisma.FavoriteAlbumOrderByWithRelationInput
+  favorite?: Prisma.FavoriteAlbumOrderByWithRelationInput
 }
 
 export type AlbumWhereUniqueInput = Prisma.AtLeast<{
@@ -233,7 +233,7 @@ export type AlbumWhereUniqueInput = Prisma.AtLeast<{
   artistId?: Prisma.StringNullableFilter<"Album"> | string | null
   artist?: Prisma.XOR<Prisma.ArtistNullableScalarRelationFilter, Prisma.ArtistWhereInput> | null
   tracks?: Prisma.TrackListRelationFilter
-  favoriteAlbum?: Prisma.XOR<Prisma.FavoriteAlbumNullableScalarRelationFilter, Prisma.FavoriteAlbumWhereInput> | null
+  favorite?: Prisma.XOR<Prisma.FavoriteAlbumNullableScalarRelationFilter, Prisma.FavoriteAlbumWhereInput> | null
 }, "id">
 
 export type AlbumOrderByWithAggregationInput = {
@@ -264,7 +264,7 @@ export type AlbumCreateInput = {
   year: number
   artist?: Prisma.ArtistCreateNestedOneWithoutAlbumsInput
   tracks?: Prisma.TrackCreateNestedManyWithoutAlbumInput
-  favoriteAlbum?: Prisma.FavoriteAlbumCreateNestedOneWithoutAlbumInput
+  favorite?: Prisma.FavoriteAlbumCreateNestedOneWithoutAlbumInput
 }
 
 export type AlbumUncheckedCreateInput = {
@@ -273,7 +273,7 @@ export type AlbumUncheckedCreateInput = {
   year: number
   artistId?: string | null
   tracks?: Prisma.TrackUncheckedCreateNestedManyWithoutAlbumInput
-  favoriteAlbum?: Prisma.FavoriteAlbumUncheckedCreateNestedOneWithoutAlbumInput
+  favorite?: Prisma.FavoriteAlbumUncheckedCreateNestedOneWithoutAlbumInput
 }
 
 export type AlbumUpdateInput = {
@@ -282,7 +282,7 @@ export type AlbumUpdateInput = {
   year?: Prisma.IntFieldUpdateOperationsInput | number
   artist?: Prisma.ArtistUpdateOneWithoutAlbumsNestedInput
   tracks?: Prisma.TrackUpdateManyWithoutAlbumNestedInput
-  favoriteAlbum?: Prisma.FavoriteAlbumUpdateOneWithoutAlbumNestedInput
+  favorite?: Prisma.FavoriteAlbumUpdateOneWithoutAlbumNestedInput
 }
 
 export type AlbumUncheckedUpdateInput = {
@@ -291,7 +291,7 @@ export type AlbumUncheckedUpdateInput = {
   year?: Prisma.IntFieldUpdateOperationsInput | number
   artistId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   tracks?: Prisma.TrackUncheckedUpdateManyWithoutAlbumNestedInput
-  favoriteAlbum?: Prisma.FavoriteAlbumUncheckedUpdateOneWithoutAlbumNestedInput
+  favorite?: Prisma.FavoriteAlbumUncheckedUpdateOneWithoutAlbumNestedInput
 }
 
 export type AlbumCreateManyInput = {
@@ -405,6 +405,14 @@ export type AlbumUncheckedUpdateManyWithoutArtistNestedInput = {
   deleteMany?: Prisma.AlbumScalarWhereInput | Prisma.AlbumScalarWhereInput[]
 }
 
+export type IntFieldUpdateOperationsInput = {
+  set?: number
+  increment?: number
+  decrement?: number
+  multiply?: number
+  divide?: number
+}
+
 export type NullableStringFieldUpdateOperationsInput = {
   set?: string | null
 }
@@ -425,18 +433,18 @@ export type AlbumUpdateOneWithoutTracksNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.AlbumUpdateToOneWithWhereWithoutTracksInput, Prisma.AlbumUpdateWithoutTracksInput>, Prisma.AlbumUncheckedUpdateWithoutTracksInput>
 }
 
-export type AlbumCreateNestedOneWithoutFavoriteAlbumInput = {
-  create?: Prisma.XOR<Prisma.AlbumCreateWithoutFavoriteAlbumInput, Prisma.AlbumUncheckedCreateWithoutFavoriteAlbumInput>
-  connectOrCreate?: Prisma.AlbumCreateOrConnectWithoutFavoriteAlbumInput
+export type AlbumCreateNestedOneWithoutFavoriteInput = {
+  create?: Prisma.XOR<Prisma.AlbumCreateWithoutFavoriteInput, Prisma.AlbumUncheckedCreateWithoutFavoriteInput>
+  connectOrCreate?: Prisma.AlbumCreateOrConnectWithoutFavoriteInput
   connect?: Prisma.AlbumWhereUniqueInput
 }
 
-export type AlbumUpdateOneRequiredWithoutFavoriteAlbumNestedInput = {
-  create?: Prisma.XOR<Prisma.AlbumCreateWithoutFavoriteAlbumInput, Prisma.AlbumUncheckedCreateWithoutFavoriteAlbumInput>
-  connectOrCreate?: Prisma.AlbumCreateOrConnectWithoutFavoriteAlbumInput
-  upsert?: Prisma.AlbumUpsertWithoutFavoriteAlbumInput
+export type AlbumUpdateOneRequiredWithoutFavoriteNestedInput = {
+  create?: Prisma.XOR<Prisma.AlbumCreateWithoutFavoriteInput, Prisma.AlbumUncheckedCreateWithoutFavoriteInput>
+  connectOrCreate?: Prisma.AlbumCreateOrConnectWithoutFavoriteInput
+  upsert?: Prisma.AlbumUpsertWithoutFavoriteInput
   connect?: Prisma.AlbumWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.AlbumUpdateToOneWithWhereWithoutFavoriteAlbumInput, Prisma.AlbumUpdateWithoutFavoriteAlbumInput>, Prisma.AlbumUncheckedUpdateWithoutFavoriteAlbumInput>
+  update?: Prisma.XOR<Prisma.XOR<Prisma.AlbumUpdateToOneWithWhereWithoutFavoriteInput, Prisma.AlbumUpdateWithoutFavoriteInput>, Prisma.AlbumUncheckedUpdateWithoutFavoriteInput>
 }
 
 export type AlbumCreateWithoutArtistInput = {
@@ -444,7 +452,7 @@ export type AlbumCreateWithoutArtistInput = {
   name: string
   year: number
   tracks?: Prisma.TrackCreateNestedManyWithoutAlbumInput
-  favoriteAlbum?: Prisma.FavoriteAlbumCreateNestedOneWithoutAlbumInput
+  favorite?: Prisma.FavoriteAlbumCreateNestedOneWithoutAlbumInput
 }
 
 export type AlbumUncheckedCreateWithoutArtistInput = {
@@ -452,7 +460,7 @@ export type AlbumUncheckedCreateWithoutArtistInput = {
   name: string
   year: number
   tracks?: Prisma.TrackUncheckedCreateNestedManyWithoutAlbumInput
-  favoriteAlbum?: Prisma.FavoriteAlbumUncheckedCreateNestedOneWithoutAlbumInput
+  favorite?: Prisma.FavoriteAlbumUncheckedCreateNestedOneWithoutAlbumInput
 }
 
 export type AlbumCreateOrConnectWithoutArtistInput = {
@@ -496,7 +504,7 @@ export type AlbumCreateWithoutTracksInput = {
   name: string
   year: number
   artist?: Prisma.ArtistCreateNestedOneWithoutAlbumsInput
-  favoriteAlbum?: Prisma.FavoriteAlbumCreateNestedOneWithoutAlbumInput
+  favorite?: Prisma.FavoriteAlbumCreateNestedOneWithoutAlbumInput
 }
 
 export type AlbumUncheckedCreateWithoutTracksInput = {
@@ -504,7 +512,7 @@ export type AlbumUncheckedCreateWithoutTracksInput = {
   name: string
   year: number
   artistId?: string | null
-  favoriteAlbum?: Prisma.FavoriteAlbumUncheckedCreateNestedOneWithoutAlbumInput
+  favorite?: Prisma.FavoriteAlbumUncheckedCreateNestedOneWithoutAlbumInput
 }
 
 export type AlbumCreateOrConnectWithoutTracksInput = {
@@ -528,7 +536,7 @@ export type AlbumUpdateWithoutTracksInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   year?: Prisma.IntFieldUpdateOperationsInput | number
   artist?: Prisma.ArtistUpdateOneWithoutAlbumsNestedInput
-  favoriteAlbum?: Prisma.FavoriteAlbumUpdateOneWithoutAlbumNestedInput
+  favorite?: Prisma.FavoriteAlbumUpdateOneWithoutAlbumNestedInput
 }
 
 export type AlbumUncheckedUpdateWithoutTracksInput = {
@@ -536,10 +544,10 @@ export type AlbumUncheckedUpdateWithoutTracksInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   year?: Prisma.IntFieldUpdateOperationsInput | number
   artistId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  favoriteAlbum?: Prisma.FavoriteAlbumUncheckedUpdateOneWithoutAlbumNestedInput
+  favorite?: Prisma.FavoriteAlbumUncheckedUpdateOneWithoutAlbumNestedInput
 }
 
-export type AlbumCreateWithoutFavoriteAlbumInput = {
+export type AlbumCreateWithoutFavoriteInput = {
   id?: string
   name: string
   year: number
@@ -547,7 +555,7 @@ export type AlbumCreateWithoutFavoriteAlbumInput = {
   tracks?: Prisma.TrackCreateNestedManyWithoutAlbumInput
 }
 
-export type AlbumUncheckedCreateWithoutFavoriteAlbumInput = {
+export type AlbumUncheckedCreateWithoutFavoriteInput = {
   id?: string
   name: string
   year: number
@@ -555,23 +563,23 @@ export type AlbumUncheckedCreateWithoutFavoriteAlbumInput = {
   tracks?: Prisma.TrackUncheckedCreateNestedManyWithoutAlbumInput
 }
 
-export type AlbumCreateOrConnectWithoutFavoriteAlbumInput = {
+export type AlbumCreateOrConnectWithoutFavoriteInput = {
   where: Prisma.AlbumWhereUniqueInput
-  create: Prisma.XOR<Prisma.AlbumCreateWithoutFavoriteAlbumInput, Prisma.AlbumUncheckedCreateWithoutFavoriteAlbumInput>
+  create: Prisma.XOR<Prisma.AlbumCreateWithoutFavoriteInput, Prisma.AlbumUncheckedCreateWithoutFavoriteInput>
 }
 
-export type AlbumUpsertWithoutFavoriteAlbumInput = {
-  update: Prisma.XOR<Prisma.AlbumUpdateWithoutFavoriteAlbumInput, Prisma.AlbumUncheckedUpdateWithoutFavoriteAlbumInput>
-  create: Prisma.XOR<Prisma.AlbumCreateWithoutFavoriteAlbumInput, Prisma.AlbumUncheckedCreateWithoutFavoriteAlbumInput>
+export type AlbumUpsertWithoutFavoriteInput = {
+  update: Prisma.XOR<Prisma.AlbumUpdateWithoutFavoriteInput, Prisma.AlbumUncheckedUpdateWithoutFavoriteInput>
+  create: Prisma.XOR<Prisma.AlbumCreateWithoutFavoriteInput, Prisma.AlbumUncheckedCreateWithoutFavoriteInput>
   where?: Prisma.AlbumWhereInput
 }
 
-export type AlbumUpdateToOneWithWhereWithoutFavoriteAlbumInput = {
+export type AlbumUpdateToOneWithWhereWithoutFavoriteInput = {
   where?: Prisma.AlbumWhereInput
-  data: Prisma.XOR<Prisma.AlbumUpdateWithoutFavoriteAlbumInput, Prisma.AlbumUncheckedUpdateWithoutFavoriteAlbumInput>
+  data: Prisma.XOR<Prisma.AlbumUpdateWithoutFavoriteInput, Prisma.AlbumUncheckedUpdateWithoutFavoriteInput>
 }
 
-export type AlbumUpdateWithoutFavoriteAlbumInput = {
+export type AlbumUpdateWithoutFavoriteInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   year?: Prisma.IntFieldUpdateOperationsInput | number
@@ -579,7 +587,7 @@ export type AlbumUpdateWithoutFavoriteAlbumInput = {
   tracks?: Prisma.TrackUpdateManyWithoutAlbumNestedInput
 }
 
-export type AlbumUncheckedUpdateWithoutFavoriteAlbumInput = {
+export type AlbumUncheckedUpdateWithoutFavoriteInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   year?: Prisma.IntFieldUpdateOperationsInput | number
@@ -598,7 +606,7 @@ export type AlbumUpdateWithoutArtistInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   year?: Prisma.IntFieldUpdateOperationsInput | number
   tracks?: Prisma.TrackUpdateManyWithoutAlbumNestedInput
-  favoriteAlbum?: Prisma.FavoriteAlbumUpdateOneWithoutAlbumNestedInput
+  favorite?: Prisma.FavoriteAlbumUpdateOneWithoutAlbumNestedInput
 }
 
 export type AlbumUncheckedUpdateWithoutArtistInput = {
@@ -606,7 +614,7 @@ export type AlbumUncheckedUpdateWithoutArtistInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   year?: Prisma.IntFieldUpdateOperationsInput | number
   tracks?: Prisma.TrackUncheckedUpdateManyWithoutAlbumNestedInput
-  favoriteAlbum?: Prisma.FavoriteAlbumUncheckedUpdateOneWithoutAlbumNestedInput
+  favorite?: Prisma.FavoriteAlbumUncheckedUpdateOneWithoutAlbumNestedInput
 }
 
 export type AlbumUncheckedUpdateManyWithoutArtistInput = {
@@ -653,7 +661,7 @@ export type AlbumSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   artistId?: boolean
   artist?: boolean | Prisma.Album$artistArgs<ExtArgs>
   tracks?: boolean | Prisma.Album$tracksArgs<ExtArgs>
-  favoriteAlbum?: boolean | Prisma.Album$favoriteAlbumArgs<ExtArgs>
+  favorite?: boolean | Prisma.Album$favoriteArgs<ExtArgs>
   _count?: boolean | Prisma.AlbumCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["album"]>
 
@@ -684,7 +692,7 @@ export type AlbumOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = ru
 export type AlbumInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   artist?: boolean | Prisma.Album$artistArgs<ExtArgs>
   tracks?: boolean | Prisma.Album$tracksArgs<ExtArgs>
-  favoriteAlbum?: boolean | Prisma.Album$favoriteAlbumArgs<ExtArgs>
+  favorite?: boolean | Prisma.Album$favoriteArgs<ExtArgs>
   _count?: boolean | Prisma.AlbumCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type AlbumIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -699,7 +707,7 @@ export type $AlbumPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   objects: {
     artist: Prisma.$ArtistPayload<ExtArgs> | null
     tracks: Prisma.$TrackPayload<ExtArgs>[]
-    favoriteAlbum: Prisma.$FavoriteAlbumPayload<ExtArgs> | null
+    favorite: Prisma.$FavoriteAlbumPayload<ExtArgs> | null
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1102,7 +1110,7 @@ export interface Prisma__AlbumClient<T, Null = never, ExtArgs extends runtime.Ty
   readonly [Symbol.toStringTag]: "PrismaPromise"
   artist<T extends Prisma.Album$artistArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Album$artistArgs<ExtArgs>>): Prisma.Prisma__ArtistClient<runtime.Types.Result.GetResult<Prisma.$ArtistPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   tracks<T extends Prisma.Album$tracksArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Album$tracksArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TrackPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  favoriteAlbum<T extends Prisma.Album$favoriteAlbumArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Album$favoriteAlbumArgs<ExtArgs>>): Prisma.Prisma__FavoriteAlbumClient<runtime.Types.Result.GetResult<Prisma.$FavoriteAlbumPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  favorite<T extends Prisma.Album$favoriteArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Album$favoriteArgs<ExtArgs>>): Prisma.Prisma__FavoriteAlbumClient<runtime.Types.Result.GetResult<Prisma.$FavoriteAlbumPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1575,9 +1583,9 @@ export type Album$tracksArgs<ExtArgs extends runtime.Types.Extensions.InternalAr
 }
 
 /**
- * Album.favoriteAlbum
+ * Album.favorite
  */
-export type Album$favoriteAlbumArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type Album$favoriteArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
    * Select specific fields to fetch from the FavoriteAlbum
    */

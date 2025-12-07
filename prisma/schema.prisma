@@ -1,6 +1,6 @@
 generator client {
   provider = "prisma-client"
-  output   = "../node_modules/.prisma/client"
+  output   = "../src/generated/client"
   moduleFormat = "cjs"
 }
 
@@ -61,6 +61,6 @@ model User {
   login     String   @unique
   password  String
   version   Int      @default(1)
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  createdAt BigInt
+  updatedAt BigInt
 }

@@ -18,11 +18,6 @@ export { Prisma }
 export * as $Enums from './enums'
 export * from './enums';
 /**
- * Model User
- * 
- */
-export type User = Prisma.UserModel
-/**
  * Model Artist
  * 
  */
@@ -52,3 +47,8 @@ export type FavoriteAlbum = Prisma.FavoriteAlbumModel
  * 
  */
 export type FavoriteTrack = Prisma.FavoriteTrackModel
+/**
+ * Model User
+ * 
+ */
+export type User = Prisma.UserModel
