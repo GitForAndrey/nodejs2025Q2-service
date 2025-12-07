@@ -1,0 +1,9 @@
+FROM postgres:16-alpine
+
+ENV POSTGRES_DB=musicdb
+ENV POSTGRES_USER=musicuser
+ENV POSTGRES_PASSWORD=password123
+
+EXPOSE 5432
+
+COPY ./init.sql /docker-entrypoint-initdb.d/

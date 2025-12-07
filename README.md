@@ -1,3 +1,4 @@
+
 # Home Library Service
 
 ## Prerequisites
@@ -8,8 +9,14 @@
 ## Downloading
 
 ```
-git clone {repository URL}
+git clone {https://github.com/VladTarnovskiy/nodejs2023Q2-service.git}
 ```
+
+## Install PostgresQL & Docker
+
+PostgresQL: https://www.postgresql.org/
+
+Docker: https://hub.docker.com/
 
 ## Installing NPM modules
 
@@ -17,56 +24,56 @@ git clone {repository URL}
 npm install
 ```
 
-## Running application
+## Running application localy
+
+First of all you need to create a `.env` file. Copy from .env.example
+
+Then you need to create a new PostgresQL database. Be shure that PostgresQL installed on your machine.
+
+Execute this command to create a new database
 
 ```
-npm start
-```
+npx prisma generate
 
-After starting the app on port (4000 as default) you can open
-in your browser OpenAPI documentation by typing http://localhost:4000/doc/.
-For more information about OpenAPI/Swagger please visit https://swagger.io/.
-
-## Testing
-
-After application running open new terminal and enter:
-
-To run all tests without authorization
-
-```
-npm run test
-```
-
-To run only one of all test suites
-
-```
-npm run test -- <path to suite>
-```
-
-To run all test with authorization
-
-```
-npm run test:auth
-```
-
-To run only specific test suite with authorization
-
-```
-npm run test:auth -- <path to suite>
-```
-
-### Auto-fix and format
-
-```
-npm run lint
 ```
 
 ```
-npm run format
+npm run database:init
+
 ```
 
-### Debugging in VSCode
+```
 
-Press <kbd>F5</kbd> to debug.
+npm run start:dev
 
-For more information, visit: https://code.visualstudio.com/docs/editor/debugging
+```
+
+## Running application using Docker
+
+Run this command and wait
+
+```
+
+docker-compose up
+
+```
+
+## Scan for vulnerabilities
+
+Since docker scan is deprecated, docker scout is used for vulnerabilities scanning.
+
+Run scan after complete command `docker-compose up`
+
+```
+
+npm run docker:scan
+
+```
+
+## API
+
+There are `Users`, `Artists`, `Albums`, `Tracks` and `Favorites` REST endpoints with separate router paths
+
+```
+
+```
