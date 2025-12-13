@@ -5,9 +5,11 @@ import { ArtistsModule } from './Artist/artist.module';
 import { AlbumsModule } from './Album/album.module';
 import { FavoritesModule } from './Favorites/favorites.module';
 import { PrismaModule } from 'prisma/prisma.module';
+import { LoggingModule } from './Logging/logging.module';
 
 @Module({
   imports: [
+    LoggingModule,
     PrismaModule,
     UsersModule,
     TracksModule,
