@@ -9,7 +9,7 @@
 ## Downloading
 
 ```
-git clone {https://github.com/VladTarnovskiy/nodejs2023Q2-service.git}
+git clone https://github.com/GitForAndrey/nodejs2025Q2-service/tree/develop3
 ```
 
 ## Install PostgresQL & Docker
@@ -19,11 +19,9 @@ PostgresQL: https://www.postgresql.org/
 Docker: https://hub.docker.com/
 
 ## Installing NPM modules
-
 ```
 npm install
 ```
-
 ## Running application localy
 
 First of all you need to create a `.env` file. Copy from .env.example
@@ -36,14 +34,11 @@ Execute this command to create a new database
 npx prisma generate
 
 ```
-
 ```
-
 npm run start:dev
-
 ```
 
-## Running application using Docker
+## Running application using Docker with PostgreSQL database
 
 Run this command and wait
 
