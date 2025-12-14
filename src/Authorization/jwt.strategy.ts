@@ -16,7 +16,7 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
   }
 
   async validate(payload: any) {
-    console.log(' Token validated, payload:', payload); // Успішна валідація
+    console.log(' Token validated, payload:', payload);
     return { userId: payload.userId, login: payload.login };
   }
 }

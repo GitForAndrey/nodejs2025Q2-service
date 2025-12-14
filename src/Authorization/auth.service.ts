@@ -13,7 +13,6 @@ export class AuthService {
   ) {}
 
   async signup(login: string, password: string) {
-    // Перевірка чи користувач вже існує
     const existingUser = await this.prisma.user.findUnique({
       where: { login },
     });
@@ -22,11 +21,9 @@ export class AuthService {
       throw new ForbiddenException('User already exists');
     }
 
-    // Хешування пароля
     const saltRounds = 10;
     const hashedPassword = await bcrypt.hash(password, saltRounds);
 const now = Date.now();
-    // Створення користувача
     const user = await this.prisma.user.create({
       data: {
         login,
@@ -41,7 +38,6 @@ const now = Date.now();
   }
 
   async login(login: string, password: string) {
-    // Пошук користувача
     const user = await this.prisma.user.findUnique({
       where: { login },
     });
@@ -50,13 +46,11 @@ const now = Date.now();
       throw new ForbiddenException('Invalid credentials');
     }
 
-    // Перевірка пароля
     const isPasswordValid = await bcrypt.compare(password, user.password);
     if (!isPasswordValid) {
       throw new ForbiddenException('Invalid credentials');
     }
 
-    // Генерація токенів
     return this.generateTokens(user.id, user.login);
   }
 
