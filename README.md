@@ -1,3 +1,4 @@
+
 # Home Library Service
 
 ## Prerequisites
@@ -8,65 +9,35 @@
 ## Downloading
 
 ```
-git clone {repository URL}
+git clone https://github.com/GitForAndrey/nodejs2025Q2-service/tree/develop3
 ```
 
-## Installing NPM modules
+## Install PostgresQL & Docker
 
+PostgresQL: https://www.postgresql.org/
+
+Docker: https://hub.docker.com/
+
+## Installing NPM modules
 ```
 npm install
 ```
+First of all you need to create a `.env` file. Copy from .env.example
 
-## Running application
+## Running application using Docker with PostgreSQL database
 
-```
-npm start
-```
-
-After starting the app on port (4000 as default) you can open
-in your browser OpenAPI documentation by typing http://localhost:4000/doc/.
-For more information about OpenAPI/Swagger please visit https://swagger.io/.
-
-## Testing
-
-After application running open new terminal and enter:
-
-To run all tests without authorization
+Run this command and wait
 
 ```
-npm run test
-```
-
-To run only one of all test suites
+docker compose build
+docker-compose up
 
 ```
-npm run test -- <path to suite>
-```
-
-To run all test with authorization
-
+To run test, run
 ```
 npm run test:auth
 ```
-
-To run only specific test suite with authorization
-
+If you want to reset the database:
 ```
-npm run test:auth -- <path to suite>
+npx prisma migrate reset --force
 ```
-
-### Auto-fix and format
-
-```
-npm run lint
-```
-
-```
-npm run format
-```
-
-### Debugging in VSCode
-
-Press <kbd>F5</kbd> to debug.
-
-For more information, visit: https://code.visualstudio.com/docs/editor/debugging
