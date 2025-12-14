@@ -43,11 +43,15 @@ npm run start:dev
 Run this command and wait
 
 ```
-
+docker compose build
 docker-compose up
 
 ```
-
-## Scan for vulnerabilities
-
-Since docker scan is deprecated, docker scout is used for vulnerabilities scanning.
+To run test, run
+```
+npm run test:auth
+```
+If you want to reset the database:
+```
+npx prisma migrate reset --force
+```
